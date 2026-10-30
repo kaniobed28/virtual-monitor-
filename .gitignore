@@ -1,0 +1,6 @@
+node_modules/
+config.json
+certs/
+*.log
+test_*.png
+npm-debug.log*

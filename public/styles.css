@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  color: #eee;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#screen {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #000;
+  touch-action: none; /* §5.2: we handle pointer gestures ourselves */
+}
+
+.pill {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  line-height: 1;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  white-space: nowrap;
+  transition: opacity 0.4s ease;
+  z-index: 10;
+}
+
+.pill[data-state="connected"] {
+  color: #9be89b;
+}
+.pill[data-state="connecting"],
+.pill[data-state="reconnecting"] {
+  color: #f0d070;
+}
+.pill[data-state="error"],
+.pill[data-state="closed"] {
+  color: #f09090;
+}
+.pill.faded {
+  opacity: 0;
+}
+
+.overlay,
+.help {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 20;
+  padding: 24px;
+  text-align: center;
+}
+
+.overlay-card,
+.help-card {
+  max-width: 420px;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: #f0b0b0;
+}
+
+#overlay-sub {
+  font-size: 15px;
+  color: #aaa;
+  margin-bottom: 24px;
+}
+
+button {
+  font-size: 18px;
+  padding: 14px 32px;
+  border-radius: 12px;
+  border: none;
+  background: #2d6cdf;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:active {
+  background: #1f52ad;
+}
+
+.hint {
+  margin-top: 24px;
+  font-size: 13px;
+  color: #999;
+  line-height: 1.5;
+}
+
+.help ul {
+  text-align: left;
+  list-style: disc;
+  padding-left: 20px;
+  line-height: 1.7;
+  font-size: 15px;
+  color: #ccc;
+}
+
+.hidden {
+  display: none !important;
+}

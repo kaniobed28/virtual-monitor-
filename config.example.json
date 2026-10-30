@@ -1,0 +1,14 @@
+{
+  "host": "0.0.0.0",
+  "port": 3000,
+  "mode": "lan",
+  "token": "CHANGE-ME-long-random-string",
+  "ffmpegPath": "ffmpeg",
+  "adbPath": "adb",
+  "displays": [
+    { "id": 1, "source": "ddagrab", "outputIdx": 1, "fps": 30, "quality": 5, "maxWidth": 1920 },
+    { "id": 2, "source": "ddagrab", "outputIdx": 2, "fps": 30, "quality": 5, "maxWidth": 1920 }
+  ],
+  "input": { "enabled": false },
+  "https": { "enabled": false, "keyPath": "certs/key.pem", "certPath": "certs/cert.pem" }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "phone-monitor",
+  "version": "1.0.0",
+  "description": "Use up to two phones as extended monitors for a Windows PC, over the LAN or USB, from a browser.",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "koffi": "^2.9.0",
+    "ws": "^8.18.0"
+  }
+}

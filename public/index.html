@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no"
+  />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#000000" />
+  <title>Phone Monitor</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="icon" href="icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="screen"></canvas>
+
+  <div id="pill" class="pill" data-state="connecting">connecting…</div>
+
+  <div id="overlay" class="overlay">
+    <div class="overlay-card">
+      <h1>Phone Monitor</h1>
+      <p id="overlay-sub">Tap to start</p>
+      <button id="start-btn" type="button">Tap to start</button>
+      <p id="ios-hint" class="hint hidden">
+        For fullscreen on iPhone: tap <strong>Share</strong> → <strong>Add to Home Screen</strong>,
+        then open it from the icon.
+      </p>
+    </div>
+  </div>
+
+  <div id="help" class="help hidden">
+    <div class="help-card">
+      <h2>Can't connect</h2>
+      <ul>
+        <li>Same Wi-Fi as the PC? Prefer 5 GHz.</li>
+        <li>PC firewall may block it — allow on Private networks.</li>
+        <li>Android: try <strong>USB mode</strong> (adb reverse).</li>
+        <li>Corporate Wi-Fi may isolate devices or VPN may block the subnet.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="client.js"></script>
+</body>
+</html>
