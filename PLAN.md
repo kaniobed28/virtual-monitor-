@@ -203,10 +203,13 @@ phone-monitor/
    ├─ config.test.js
    ├─ auth.test.js
    ├─ ffmpegArgs.test.js
+   ├─ capture.test.js        ← CaptureManager, child_process mocked
    ├─ streamHub.test.js
    ├─ network.test.js
    └─ fixtures/sample.mjpeg
 ```
+
+CI: `.github/workflows/ci.yml` runs `npm test` on Ubuntu + Windows (Node 20) for every push/PR to `main`.
 
 ---
 
@@ -401,7 +404,7 @@ Follow the decision flow in §2.4. Do **one** of 0.2A / 0.2B / 0.2C, and **one**
 
 - [x] **2.1 `scripts/list-displays.ps1`** — DPI-aware monitor list via `Screen.AllScreens`, `-Json` switch, ddagrab index test hint.
 - [x] **2.2 `mjpegParser.js`** — streaming SOI/EOI parser, split markers, 20 MB overflow reset. `test/mjpegParser.test.js`.
-- [x] **2.3 `capture.js`** — `buildFfmpegArgs` (all three sources) + `CaptureManager` (array spawn, backoff restart, kill on stop/exit, `window not found` for gdigrab-window). `test/ffmpegArgs.test.js`.
+- [x] **2.3 `capture.js`** — `buildFfmpegArgs` (all three sources) + `CaptureManager` (array spawn, backoff restart, kill on stop/exit, `window not found` for gdigrab-window). `test/ffmpegArgs.test.js` + `test/capture.test.js` (mocked `child_process`: spawn args, frame parsing, idempotent start, stop-kills-no-restart, backoff restart + reset, window-not-found).
 - [x] **2.4 `displays.js`** — parse `list-displays.ps1 -Json`, map id → bounds (config override else auto-detect).
 - [x] **2.5 `scripts/list-windows.ps1`** — visible titled windows for `windowTitle`.
 - [x] **2.6 `scripts/check-network.ps1` + `src/network.js`** — IPs/profile/VPN/phone URLs + local healthz probe; `lanAddresses()`/`phoneUrls()`, virtual-adapter filtering. `test/network.test.js`.

@@ -1,0 +1,9 @@
+# Normalize line endings: store LF in the repo, check out LF everywhere.
+* text=auto eol=lf
+
+# Windows PowerShell scripts are checked out with CRLF.
+*.ps1 text eol=crlf
+
+# Binary assets must never be line-ending converted.
+*.png binary
+test/fixtures/sample.mjpeg binary
