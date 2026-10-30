@@ -27,4 +27,17 @@ export function isValidToken(provided, expected) {
   return equalHash && a.length === b.length;
 }
 
-export default { isValidToken };
+/**
+ * A short, non-reversible identifier for a token, safe to put in logs (§6.3).
+ * Never log the token itself (except the startup phone URLs, which the user
+ * needs verbatim per §3.2).
+ *
+ * @param {string} token
+ * @returns {string} e.g. "a1b2c3d4"
+ */
+export function tokenFingerprint(token) {
+  if (typeof token !== 'string' || token.length === 0) return '<none>';
+  return crypto.createHash('sha256').update(token, 'utf8').digest('hex').slice(0, 8);
+}
+
+export default { isValidToken, tokenFingerprint };

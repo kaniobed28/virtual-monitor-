@@ -432,16 +432,16 @@ Follow the decision flow in §2.4. Do **one** of 0.2A / 0.2B / 0.2C, and **one**
 
 ### Phase 6 — Hardening and performance
 
-- [ ] **6.1** Per-display `fps`/`quality`/`maxWidth` honored; document presets (Battery 15/q8, Balanced 30/q5, Sharp 30/q3).
+- [x] **6.1** Per-display `fps`/`quality`/`maxWidth` honored (via `buildFfmpegArgs`); presets documented in README §8 (Battery 15/q8, Balanced 30/q5, Sharp 30/q3).
 - [x] **6.2** Limit concurrent clients to 4 per display; extra connections closed with code `4029`.
-- [ ] **6.3** Log only a token fingerprint (first 4 chars), never the full token. *(Startup still prints full phone URLs per §3.2.)*
-- [ ] **6.4** Soak test: 2 phones for 30 minutes; RSS flat (≤10% growth), no FFmpeg zombies.
-- [ ] **6.5** Measure latency (ms clock on monitor, photo of PC+phone), record in README.
+- [x] **6.3** `tokenFingerprint()` added and logged at startup; no code path logs the full token (except the startup phone URLs the user needs verbatim, per §3.2).
+- [~] **6.4** Soak-test procedure documented in README §9 (RSS sampling, no-zombie check). Not yet executed — needs 2 phones for 30 min.
+- [~] **6.5** Latency-measurement procedure documented in README §9 (live pill RTT + ms-clock photo). Not yet recorded — needs hardware.
 
 ### Phase 7 — Docs and release
 
-- [~] **7.1** `README.md` (overview + quick start present; full decision-flow/screenshots pending).
-- [ ] **7.2** Troubleshooting table (symptom → cause → fix).
+- [x] **7.1** `README.md` — policy check, decision flow, all Phase 0 screen/connectivity options, portable tool setup, config examples per `source`/`mode`, run commands, phone URLs, iOS Home Screen tip, presets, perf/soak procedure. (Windows Display-settings screenshots are the one remaining nice-to-have.)
+- [x] **7.2** Troubleshooting table (symptom → cause → fix) in README §12.
 
 ### Phase 8 — Future (not in v1)
 

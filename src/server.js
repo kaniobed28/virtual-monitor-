@@ -9,7 +9,7 @@ import express from 'express';
 import { WebSocketServer } from 'ws';
 
 import { loadConfig } from './config.js';
-import { isValidToken } from './auth.js';
+import { isValidToken, tokenFingerprint } from './auth.js';
 import { CaptureManager } from './capture.js';
 import { StreamHub } from './streamHub.js';
 import { phoneUrls } from './network.js';
@@ -275,6 +275,7 @@ function createServer(app, config) {
 function printStartup(config) {
   const scheme = config.https.enabled ? 'https' : 'http';
   logger.info(`server: listening on ${scheme}://${config.host}:${config.port} (mode=${config.mode})`);
+  logger.info(`server: token fingerprint ${tokenFingerprint(config.token)}`);
   logger.info('server: open these URLs on the phones:');
   for (const { display, url } of phoneUrls(config)) {
     logger.info(`  display ${display}: ${url}`);
